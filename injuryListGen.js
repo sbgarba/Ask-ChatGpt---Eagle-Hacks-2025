@@ -1,5 +1,8 @@
+// This file has no use outside of testing, however it is needed to randomly generate datasets for the project
+
 import fs from 'fs'
 
+// Huge list of injuries for the random generation to pull from
 const injuries = [
   { "injury": "Abrasion" },
   { "injury": "Sprain" },
@@ -104,27 +107,27 @@ const injuries = [
   { "injury": "Scald Burn" },
   { "injury": "Abrasive Injury" }
 ]
-console.log(injuries.length)
 const output = []
 
-for (let index = 0; index < 10; index++) {
-    let injuryQuantity = Math.floor(Math.random() * (5 - 1) + 1)
+for (let index = 0; index < 30; index++) {
+    let injuryQuantity = Math.floor(Math.random() * (5 - 1) + 1) // Finds between 1 and 4 injuries
     let chosenInjuries = {}
     for (let index2 = 0; index2 < injuryQuantity; index2++) {
+        // Purposefully allows duplicates, so that they can irradicated later on, for the Hertz company challenge
         let injuriesIndex = Math.floor(Math.random() * injuries.length)
         chosenInjuries = Object.assign(chosenInjuries, {[index2]: injuries[injuriesIndex].injury})
     }
     output.push({
         patientID: index,
         injuries: Object.values(chosenInjuries),
-        priority: null
+        priority: null // Will be filled by ChatGPT down the line
     })
 }
 
-let jsonString = JSON.stringify(output,null,2)
-console.log(jsonString)
+const toWrite = JSON.stringify(output,null,2)
+console.log(toWrite)
 
-fs.writeFile('injuryList.json', jsonString, function (err) {
+fs.writeFile('injuryList.json', toWrite, function (err) {
   if (err) throw err
-  console.log('Saved!')
+  console.log('injuryList.json updated!')
 })
