@@ -5,5 +5,3 @@ API-Ask_ChatGPT does not come with an API Key, you must provide it with one
 # Usage
 injuryListGen.js creates a random injury list in the correct format       
 Ask_ChatGPT-PY.py connects with the ChatGPT API, and creates the completeList.json
-#Slideshow 
-file:///C:/Users/colet/Downloads/EAGLEHACKS%202025.pdf
